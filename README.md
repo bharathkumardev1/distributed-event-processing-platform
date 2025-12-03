@@ -46,9 +46,13 @@ Clean structure suitable for extension
 ## Getting Started
 
 ## Prerequisites
+
 JDK 17+
+
 Maven 3.9+
+
 Docker + Docker Compose
+
 Kafka & Redis
 
 ## Example Event Payload
