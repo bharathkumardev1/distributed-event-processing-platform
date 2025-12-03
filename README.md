@@ -65,8 +65,9 @@ Docker + Docker Compose
 
 Kafka & Redis
 
-## Example Event Payload
+### Example Event Payload
 
+```json
 {
   "eventId": "e123",
   "type": "PAYMENT_CREATED",
@@ -76,6 +77,7 @@ Kafka & Redis
     "userId": "user-001"
   }
 }
+
 
 ## High-Level Flow
 
