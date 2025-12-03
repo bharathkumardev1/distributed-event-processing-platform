@@ -100,6 +100,7 @@ If processing fails, message is sent to DLQ topic.
 ## Author
 
 Bharath Kumar Mandha
-LinkedIn: linkedin.com/in/bharathkumar3a
+
+LinkedIn: [linkedin.com/in/bharathkumar3a](https://www.linkedin.com/in/bharathkumar3a/)
 
 
