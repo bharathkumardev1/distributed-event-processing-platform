@@ -26,9 +26,9 @@ B -->|Kafka Producer| C[events-topic]
 C --> D[Consumer Service]
 D -->|Success| E[(Redis: Processed IDs)]
 D -->|Failure| F[dlq-topic]
+```
 
-
-Tech Stack
+## Tech Stack
 Language-	Java 17
 Framework- Spring Boot
 Messaging- Apache Kafka
@@ -36,22 +36,22 @@ Caching- Redis
 Containers- Docker Compose
 Testing- JUnit, Mockito
 
-Features
+## Features
 REST API for event ingestion (/api/events)
 Kafka producer for event publishing
 Consumer with Redis-based idempotency (no duplicate processing)
 Dead-letter queue pattern for failed events
 Clean structure suitable for extension
 
-Getting Started
+## Getting Started
 
-Prerequisites
+## Prerequisites
 JDK 17+
 Maven 3.9+
 Docker + Docker Compose
 Kafka & Redis
 
-Example Event Payload
+## Example Event Payload
 {
   "eventId": "e123",
   "type": "PAYMENT_CREATED",
@@ -62,7 +62,7 @@ Example Event Payload
   }
 }
 
-High-Level Flow
+## High-Level Flow
 
 Client calls /api/events with JSON payload.
 Service publishes event to Kafka topic (events-topic).
@@ -70,13 +70,13 @@ Consumer reads message, checks Redis for eventId.
 If not processed, it applies business logic and marks as processed.
 If processing fails, message is sent to DLQ topic.
 
-Roadmap
+## Roadmap
 
  Add proper DLQ consumer and replay endpoint
  Add Prometheus metrics and Grafana dashboard
  Add integration tests for idempotency behavior
 
-Author
+## Author
 
 Bharath Kumar Mandha
 LinkedIn: linkedin.com/in/bharathkumar3a
