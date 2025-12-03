@@ -77,7 +77,7 @@ Kafka & Redis
     "userId": "user-001"
   }
 }
-
+```
 
 ## High-Level Flow
 
