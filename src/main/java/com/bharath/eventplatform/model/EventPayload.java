@@ -31,4 +31,13 @@ public class EventPayload {
     public void setPayload(Map<String, Object> payload) {
         this.payload = payload;
     }
+
+    @Override
+    public String toString() {
+        return "EventPayload{" +
+            "eventId='" + eventId + '\'' +
+            ", type='" + type + '\'' +
+            ", payload=" + payload +
+            '}';
+    }
 }
