@@ -228,10 +228,10 @@ Integration tests (TestContainers)
 Kafka + Redis integration workflow tests
 
 To run:
-
+```sh
 mvn test
-
-📘 Future Enhancements (Roadmap)
+```
+# Future Enhancements (Roadmap)
 
 Add LLM-driven enrichment (OpenAI / Claude)
 
@@ -243,7 +243,7 @@ Add multi-region failover
 
 Add distributed tracing (Jaeger + OpenTelemetry)
 
-🤝 Contributing
+# Contributing
 
 Pull requests are welcome.
 Open issues for enhancements, bugs, or feature requests.
@@ -252,4 +252,4 @@ Open issues for enhancements, bugs, or feature requests.
 
 MIT License.
 
-⭐ If you found this useful, star the repo!
+# If you found this useful, star the repo!
