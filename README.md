@@ -6,14 +6,10 @@
 [![Redis](https://img.shields.io/badge/Redis-Caching-orange.svg)]()
 [![Docker Compose](https://img.shields.io/badge/Docker-Compose-blue.svg)]()
 
-📦 Distributed Event Processing Platform
-
-Java • Spring Boot • Apache Kafka • Redis • Docker • AWS-ready
-
 A high-performance, fault-tolerant, event-driven backend platform capable of processing 30K+ events/sec with retry logic, dead-letter queues, idempotency guarantees, and real-time observability.
 Designed to simulate enterprise-grade ingestion pipelines similar to those used in fintech, e-commerce, supply chain, and IoT systems.
 
-⚡ Key Features
+# Key Features
 
 High-throughput ingestion with Kafka (30K+ events/sec benchmarked locally)
 
@@ -29,7 +25,8 @@ Structured logging + metrics hooks
 
 Docker Compose environment for local Kafka + Redis
 
-🏗️ Architecture Overview
+# Architecture Overview
+```mermaid
 flowchart LR
     A[Producer API / External Systems] -->|HTTP/JSON| B[Ingestion Service]
 
@@ -44,7 +41,7 @@ flowchart LR
     F -->|Failure| H[(Kafka DLQ)]
 
     H --> I[Retry Workers]
-
+```
 🚀 Tech Stack
 Layer	Technologies
 Language	Java 17
