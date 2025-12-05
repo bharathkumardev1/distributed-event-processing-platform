@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 
@@ -33,24 +33,20 @@ class EventProcessingIntegrationTest {
 
     @DynamicPropertySource
     static void overrideProps(DynamicPropertyRegistry registry) {
-        // Wire Spring Boot to use Testcontainers Kafka/Redis instead of local ones
         registry.add("spring.kafka.bootstrap-servers", kafka::getBootstrapServers);
         registry.add("spring.data.redis.host", redis::getHost);
         registry.add("spring.data.redis.port", () -> redis.getMappedPort(6379));
     }
 
     @BeforeAll
-    static void checkContainers() {
+    static void containersAreRunning() {
         assertThat(kafka.isRunning()).isTrue();
         assertThat(redis.isRunning()).isTrue();
     }
 
     @Test
     void contextLoads_withKafkaAndRedis() {
-        // This ensures the app can start with Testcontainers Kafka + Redis.
-        // Later you will:
-        // 1) POST an event to the HTTP API
-        // 2) Assert it appears in Kafka / Redis state.
+        // Basic smoke test: the app starts successfully against Testcontainers.
         assertThat(true).isTrue();
     }
 }
