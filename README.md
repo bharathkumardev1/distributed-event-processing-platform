@@ -1,5 +1,5 @@
 # Distributed Event Processing Platform
-
+![CI Status](https://github.com/bharathkumardev1/distributed-event-processing-platform/actions/workflows/ci.yml/badge.svg)
 [![Java](https://img.shields.io/badge/Java-17-blue.svg)]()
 [![Spring Boot](https://img.shields.io/badge/SpringBoot-3.3-success.svg)]()
 [![Kafka](https://img.shields.io/badge/Kafka-Event%20Streaming-black.svg)]()
