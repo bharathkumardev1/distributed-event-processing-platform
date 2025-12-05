@@ -57,8 +57,8 @@ flowchart LR
 
 This section is written for someone who knows nothing. It walks them through every single step.
 
-✅ 1. Install Prerequisites
-Windows / macOS / Linux
+# 1. Install Prerequisites
+**Windows / macOS / Linux**
 
 Install:
 
@@ -70,48 +70,49 @@ Docker Desktop
 
 Git
 
-Check versions:
 
-java -version
-mvn -version
-docker --version
-git --version
-
-✅ 2. Clone the repository
+# 2. Clone the repository
+```sh
 git clone https://github.com/bharathkumardev1/distributed-event-processing-platform.git
 cd distributed-event-processing-platform
-
-✅ 3. Start Kafka + Redis using Docker Compose
+```
+# 3. Start Kafka + Redis using Docker Compose
+```sh
 docker-compose up -d
-
+```
 
 This spins up:
 
-Service	Port	Description
-Kafka Broker	9092	Event streaming backbone
-Zookeeper	2181	Kafka coordination service
-Redis	6379	Idempotency + caching
+| Service          | Port | Description                |
+| ---------------- | ---- | -------------------------- |
+| **Kafka Broker** | 9092 | Event streaming backbone   |
+| **Zookeeper**    | 2181 | Kafka coordination service |
+| **Redis**        | 6379 | Idempotency + caching      |
+
 
 Check containers:
-
+```sh
 docker ps
-
-✅ 4. Build the application
+```
+# 4. Build the application
+```sh
 mvn clean install
-
-✅ 5. Run the Spring Boot backend
+```
+# 5. Run the Spring Boot backend
+```
 mvn spring-boot:run
-
+```
 
 Service starts on:
-
+```arduino
 http://localhost:8080
-
+```
 
 You will see Kafka + Redis connections being established in logs.
 
-📮 API Usage (Real Examples)
-➤ 1. Publish an Event
+# API Usage (Real Examples)
+**1. Publish an Event**
+```sh
 curl -X POST http://localhost:8080/api/events \
 -H "Content-Type: application/json" \
 -d '{
@@ -122,33 +123,33 @@ curl -X POST http://localhost:8080/api/events \
     "timestamp": "2025-01-15T10:22:09Z"
   }
 }'
+```
+Writes event → Kafka
+Checks idempotency
+Acknowledges ingestion
 
-
-✔ Writes event → Kafka
-✔ Checks idempotency
-✔ Acknowledges ingestion
-
-➤ 2. View Processed Event Output
+**2. View Processed Event Output**
 
 Consumer stores results in:
-
+```matlab
 processed-events topic
-
+```
 
 You can read messages using Kafka’s console tool:
-
+```sh
 docker exec -it kafka kafka-console-consumer \
 --bootstrap-server localhost:9092 \
 --topic processed-events \
 --from-beginning
-
-➤ 3. Inspect DLQ Messages
+```
+**3. Inspect DLQ Messages**
+```sh
 docker exec -it kafka kafka-console-consumer \
 --bootstrap-server localhost:9092 \
 --topic events-dlq \
 --from-beginning
-
-🔄 Retry & DLQ Flow
+```
+# Retry & DLQ Flow
 
 The system applies:
 
@@ -160,19 +161,19 @@ Retry workers periodically drain DLQ and reprocess
 
 Idempotency check ensures no duplicate processing even after retries
 
-🔑 Idempotency Logic
+# Idempotency Logic
 
 Every event has a unique ID:
-
+```nginx
 eventId
-
+```
 
 Before processing an event:
-
+```java
 if (redis.contains(eventId)) {
     skip(); // Already processed
 }
-
+```
 
 After successful processing → eventId is written into Redis with TTL.
 
@@ -184,7 +185,8 @@ at-least-once Kafka consumer duplication
 
 retry infinite loops
 
-📊 Project Structure
+# Project Structure
+```css
 src/
  └── main/java/com/bharath/eventplatform/
      ├── controller/      → API endpoints
@@ -193,8 +195,9 @@ src/
      ├── service/         → Business logic
      ├── config/          → Kafka/Redis configs
      └── model/           → DTOs, Event models
+```
 
-⚙️ Scaling Notes
+# Scaling Notes
 
 The system is designed for:
 
@@ -208,11 +211,13 @@ In production → ECS, EKS, Lambda, or Kubernetes HPA
 
 Benchmarks (local):
 
-Batch Size	Throughput
-1	~8K/sec
-10	~22K/sec
-50	~32K/sec
-🧪 Testing
+| Batch Size | Throughput |
+| ---------- | ---------- |
+| 1          | ~8K/sec    |
+| 10         | ~22K/sec   |
+| 50         | ~32K/sec   |
+
+# Testing
 
 Includes:
 
