@@ -4,7 +4,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Spring Boot parent: provides versions for all Boot + Spring deps -->
+    <!-- Spring Boot parent: manages versions for Spring Boot + plugins -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -16,13 +16,13 @@
     <artifactId>distributed-event-processing-platform</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>distributed-event-processing-platform</name>
+    <description>Distributed event processing platform</description>
 
     <properties>
         <java.version>17</java.version>
     </properties>
 
-
-    <!-- SINGLE dependencies block – everything lives here -->
+    <!-- SINGLE dependencies block -->
     <dependencies>
         <!-- Spring Boot: Web -->
         <dependency>
@@ -66,7 +66,7 @@
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>testcontainers</artifactId>
-                 <version>1.20.2</version>
+            <version>1.20.2</version>
             <scope>test</scope>
         </dependency>
 
@@ -74,7 +74,7 @@
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>junit-jupiter</artifactId>
-                 <version>1.20.2</version>
+            <version>1.20.2</version>
             <scope>test</scope>
         </dependency>
 
@@ -82,10 +82,10 @@
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>kafka</artifactId>
-                 <version>1.20.2</version>
+            <version>1.20.2</version>
             <scope>test</scope>
         </dependency>
-
+    </dependencies>
 
     <build>
         <plugins>
