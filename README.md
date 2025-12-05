@@ -42,16 +42,18 @@ flowchart LR
 
     H --> I[Retry Workers]
 ```
-🚀 Tech Stack
-Layer	Technologies
-Language	Java 17
-Backend Framework	Spring Boot, Spring WebFlux
-Messaging	Apache Kafka, Kafka Streams
-Caching / Idempotency	Redis
-Containerization	Docker, Docker Compose
-Build Tool	Maven
-Observability	Structured JSON Logging, Prometheus-ready hooks
-🛠️ Local Setup — Complete Step-By-Step Guide
+# Tech Stack
+| Layer                     | Technologies                                    |
+| ------------------------- | ----------------------------------------------- |
+| **Language**              | Java 17                                         |
+| **Backend Framework**     | Spring Boot, Spring WebFlux                     |
+| **Messaging**             | Apache Kafka, Kafka Streams                     |
+| **Caching / Idempotency** | Redis                                           |
+| **Containerization**      | Docker, Docker Compose                          |
+| **Build Tool**            | Maven                                           |
+| **Observability**         | Structured JSON Logging, Prometheus-ready hooks |
+
+# Local Setup — Complete Step-By-Step Guide
 
 This section is written for someone who knows nothing. It walks them through every single step.
 
